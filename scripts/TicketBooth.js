@@ -7,7 +7,7 @@ eventHub.addEventListener("click", ClickEvent => {
     if (ClickEvent.target.id === "rideTicket") {
         const rideEvent = new CustomEvent("rideTicketPurchased")
         console.log("You clicked on the button!")
-        dispatchEvent(rideEvent)
+        eventHub.dispatchEvent(rideEvent)
     }
 })
 
