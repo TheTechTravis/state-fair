@@ -1,7 +1,19 @@
 const eventHub = document.querySelector("#state-fair")
 const contentTarget = document.querySelector(".entry")
 
-// Only act if the click is on an element with the id value of "rideTicket"
+// MAIN COMPONENT
+export const TicketBooth = () => {
+    contentTarget.innerHTML = `
+        <div class="ticketBooth">
+            <button id="rideTicket"> Ride Ticket </button>
+            <button id="foodTicket"> Food Ticket </button>
+        </div>
+    `
+}
+
+// EVENT LISTENERS START HERE
+
+// Event for when user clicks Ride Ticket button.
 eventHub.addEventListener("click", ClickEvent => {
 
     if (ClickEvent.target.id === "rideTicket") {
@@ -11,11 +23,11 @@ eventHub.addEventListener("click", ClickEvent => {
     }
 })
 
-export const TicketBooth = () => {
-    contentTarget.innerHTML = `
-        <div class="ticketBooth">
-            <button id="rideTicket"> Ride Ticket </button>
-        </div>
-    `
-}
-
+// Event for when user clicks Food Ticket button.
+eventHub.addEventListener("click", ClickEvent => {
+    
+    if (ClickEvent.target.id === "foodTicket") {
+        const foodEvent = new CustomEvent("foodTicketPurchased")
+        eventHub.dispatchEvent(foodEvent)
+    }
+})
